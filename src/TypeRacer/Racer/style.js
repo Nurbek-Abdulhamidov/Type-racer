@@ -72,15 +72,11 @@ export const Wpm = styled.div`
 
 export const TextContainer = styled.div`
   span {
-    display: block;
-    color: #4b659d;
-    font-size: 16px;
-    text-align: end;
-    cursor: pointer;
+    color: black;
+    font-size: 20px;
   }
 
   width: 100%;
-  height: 300px;
   margin: 50px 0 20px 0;
   padding: 10px 20px;
   border-radius: 10px;
@@ -104,4 +100,11 @@ export const InputDiv = styled.div`
     padding: 0 10px;
     font-size: 20px;
   }
+`;
+
+export const Textarea = styled.textarea`
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  margin: 10px 0;
 `;

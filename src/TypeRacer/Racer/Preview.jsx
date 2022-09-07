@@ -10,13 +10,13 @@ const Preview = ({ text, userInput }) => {
         if (index < userInput.length) {
           color = value === userInput[index] ? "green" : "red";
         }
-    
         return (
-          <span key={index} style={{ backgroundColor: color }}>
+          <span style={{ backgroundColor: color }} key={index}>
             {value}
           </span>
         );
       })}
+      {/* <span>change display format</span> */}
     </div>
   );
 };

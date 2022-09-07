@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import Preview from "./Preview";
+import getText from "./getText";
 import {
   CarWay,
   CarWayContainer,
@@ -10,8 +12,21 @@ import {
   Wpm,
   Wrapper,
 } from "./style";
+import Speed from "./Speed";
 
 const Race = () => {
+  const [texts, setTexts] = useState(getText());
+  const [userInput, setuserInput] = useState("");
+  const [sec, setSec] = useState(0);
+  const [symbols, setSymbols] = useState(0);
+  const [started, setStarted] = useState(false);
+  const [finished, setFinished] = useState(false);
+
+  const onUserInputChange = (target) => {
+    const val = target.value;
+    setuserInput(val);
+  };
+
   return (
     <Wrapper>
       <Container>
@@ -22,6 +37,7 @@ const Race = () => {
         </p>
         <TimerDiv>
           <h3>The race is on! Type the text below:</h3>
+          <p>Symbols : {symbols}</p>
           <p>1:15</p>
         </TimerDiv>
         <CarWayContainer>
@@ -31,23 +47,18 @@ const Race = () => {
               alt=""
             />
           </CarWay>
-          <Wpm>0 wpm</Wpm>
+          <Wpm>
+            <Speed sec={sec} symbols={symbols} />
+          </Wpm>
         </CarWayContainer>
         <TextContainer>
-          <p>
-            Type the words into the text box, including all spaces, punctuation,
-            and proper capitalization. If you make a mistake, you will have to
-            correct it before you're allowed to proceed to the next word. a
-            queen the locust swarm turned the ground to black. Descending like a
-            shadowy tower on a fish's back and scattered the sticks who crawled
-            like snakes in the sand as the red clay took the form of a lizard
-            who rushed like a moth to the flame of my open hand.
-          </p>
-          <span>change display format</span>
+          <Preview text={texts} userInput={userInput} />
           <InputDiv>
             <input
               type="text"
+              value={userInput}
               placeholder="Type the above text here when the race begins"
+              onChange={({ target }) => onUserInputChange(target)}
             />
           </InputDiv>
         </TextContainer>
