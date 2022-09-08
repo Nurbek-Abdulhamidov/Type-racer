@@ -9,6 +9,7 @@ import {
   CarWay,
   CarWayContainer,
   Container,
+  Finish,
   Img,
   InputDiv,
   Textarea,
@@ -16,8 +17,10 @@ import {
   TimerDiv,
   Wpm,
   Wrapper,
+  YourScore,
 } from "../TypeRacer/Racer/style";
 import { HiRefresh } from "react-icons/hi";
+import { data } from "./data";
 
 const initialState = {
   text: getText(),
@@ -26,6 +29,8 @@ const initialState = {
   sec: 0,
   started: false,
   finished: false,
+  remove: "",
+  blok: "none",
 };
 
 class RaceApp extends Component {
@@ -34,6 +39,7 @@ class RaceApp extends Component {
   onRestart = () => {
     this.setState(initialState);
     console.log(getImg());
+    console.log(data[Math.floor(Math.random() * data.length)]);
   };
 
   onUserInputChange = (e) => {
@@ -74,19 +80,22 @@ class RaceApp extends Component {
     }
   }
 
-  // handleKey = ({ keyCode }) => {
-  //   if (keyCode === 32) {
-  //     this.setState({ userInput: "" });
-  //   }
-  //   console.log(keyCode);
-  // };
   render() {
-    console.log(this.state.symbols);
-    console.log(getText());
+    // const matn = data[Math.floor(Math.random() * data.length)];
+    // console.log(typeof data);
+    const data = getText().length;
+    const userText = this.state.userInput.length;
+    console.log(data, userText);
+    if (data === userText) {
+      {
+        this.state.remove = "none";
+        this.state.blok = "block";
+      }
+      console.log("Hello");
+    }
     return (
       <Wrapper>
         <Container>
-          {/* {console.log(getText(), getText().length)} */}
           <h1>Practice Racetrack</h1>
           <p>
             You are in a <b>single-player</b> race. <span>Click here</span> if
@@ -110,7 +119,7 @@ class RaceApp extends Component {
             </Wpm>
           </CarWayContainer>
 
-          <TextContainer>
+          <TextContainer non={this.state.remove}>
             <Preview text={this.state.text} userInput={this.state.userInput} />
             <InputDiv>
               <Textarea
@@ -118,11 +127,38 @@ class RaceApp extends Component {
                 onChange={this.onUserInputChange}
                 placeholder="Type the above text here when the race begins"
                 readOnly={this.state.finished}
-                // onKeyDown={this.handleKey}
               ></Textarea>
             </InputDiv>
           </TextContainer>
-
+          <Finish blok={this.state.blok}>
+            <h1>
+              Awesome !!! <br />
+              You have finished
+            </h1>
+            <YourScore>
+              <table border={2}>
+                <thead>
+                  <tr>
+                    <td>WPM</td>
+                    <td>Symbols</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      {
+                        <Speed
+                          sec={this.state.sec}
+                          symbols={this.state.symbols}
+                        />
+                      }
+                    </td>
+                    <td>{this.state.symbols}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </YourScore>
+          </Finish>
           <Button onClick={this.onRestart}>
             <i>
               <HiRefresh />

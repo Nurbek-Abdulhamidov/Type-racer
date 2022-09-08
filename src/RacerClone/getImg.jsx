@@ -1,7 +1,7 @@
 const getImg = () => {
   const images = [
-    "	https://data.typeracer.com/public/images/avatars/basic-darkblue.svg",
-    // "	https://data.typeracer.com/public/images/avatars/basic-brown.svg    ",
+    // "	https://data.typeracer.com/public/images/avatars/basic-darkblue.svg",
+    "	https://data.typeracer.com/public/images/avatars/basic-brown.svg    ",
     // "	https://data.typeracer.com/public/images/avatars/basic-beige.svg ",
     // "https://data.typeracer.com/public/images/avatars/basic-lightgreen.svg",
     // "https://data.typeracer.com/public/images/avatars/basic-green.svg",

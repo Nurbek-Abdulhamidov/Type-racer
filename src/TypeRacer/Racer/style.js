@@ -83,8 +83,36 @@ export const Wpm = styled.div`
   color: #fff;
 `;
 
+export const Finish = styled.div`
+  display: ${({ blok }) => (blok ? blok : "")};
+  h1 {
+    color: #fff;
+    text-align: center;
+    margin: 20px 0;
+  }
+`;
+
+export const YourScore = styled.div`
+  margin: 10px auto;
+  padding: 20px;
+  width: 50%;
+  background-color: #fff;
+  border-radius: 10px;
+  font-weight: 600;
+
+  table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    td {
+      padding: 5px;
+    }
+  }
+`;
+
 export const TextContainer = styled.div`
   user-select: none;
+  display: ${({ non }) => (non ? non : "")};
   span {
     color: black;
     font-size: 20px;
