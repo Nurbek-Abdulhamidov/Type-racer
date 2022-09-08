@@ -10,9 +10,21 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div`
   border-radius: 10px;
-  width: 80%;
+  width: 1200px;
   padding: 20px;
   background-color: gray;
+
+  @media (max-width: 1250px) {
+    width: 1000px;
+  }
+
+  @media (max-width: 1060px) {
+    width: 900px;
+  }
+
+  @media (max-width: 960px) {
+    width: 800px;
+  }
 
   h1 {
     font-weight: 600;
@@ -61,6 +73,7 @@ export const CarWay = styled.div`
 
 export const Img = styled.img`
   width: 8%;
+  transform: translateX(${({ move }) => (move ? `${move * 11.6}%` : "")});
 `;
 
 export const Wpm = styled.div`
@@ -71,6 +84,7 @@ export const Wpm = styled.div`
 `;
 
 export const TextContainer = styled.div`
+  user-select: none;
   span {
     color: black;
     font-size: 20px;
@@ -107,4 +121,24 @@ export const Textarea = styled.textarea`
   height: 100px;
   padding: 10px;
   margin: 10px 0;
+`;
+
+export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px 20px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #00bcf6;
+  -webkit-box-shadow: -1px 1px 5px 8px rgba(46, 137, 206, 0.2);
+  -moz-box-shadow: -1px 1px 5px 8px rgba(46, 137, 206, 0.2);
+  box-shadow: -1px 1px 5px 8px rgba(46, 137, 206, 0.2);
+  :active {
+    transform: scale(0.8);
+    transition: all 0.3s linear;
+  }
 `;

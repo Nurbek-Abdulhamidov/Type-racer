@@ -3,7 +3,9 @@ import { Component } from "react";
 import Preview from "./Preview";
 import Speed from "./Speed";
 import getText from "../TypeRacer/Racer/getText";
+import getImg from "./getImg";
 import {
+  Button,
   CarWay,
   CarWayContainer,
   Container,
@@ -15,6 +17,7 @@ import {
   Wpm,
   Wrapper,
 } from "../TypeRacer/Racer/style";
+import { HiRefresh } from "react-icons/hi";
 
 const initialState = {
   text: getText(),
@@ -30,6 +33,7 @@ class RaceApp extends Component {
 
   onRestart = () => {
     this.setState(initialState);
+    console.log(getImg());
   };
 
   onUserInputChange = (e) => {
@@ -69,6 +73,7 @@ class RaceApp extends Component {
       }, 1000);
     }
   }
+
   // handleKey = ({ keyCode }) => {
   //   if (keyCode === 32) {
   //     this.setState({ userInput: "" });
@@ -76,9 +81,12 @@ class RaceApp extends Component {
   //   console.log(keyCode);
   // };
   render() {
+    console.log(this.state.symbols);
+    console.log(getText());
     return (
       <Wrapper>
         <Container>
+          {/* {console.log(getText(), getText().length)} */}
           <h1>Practice Racetrack</h1>
           <p>
             You are in a <b>single-player</b> race. <span>Click here</span> if
@@ -92,8 +100,9 @@ class RaceApp extends Component {
           <CarWayContainer>
             <CarWay>
               <Img
-                src="https://data.typeracer.com/public/images/avatars/basic-blue.svg"
+                src={getImg()}
                 alt=""
+                move={Math.ceil((100 * this.state.symbols) / getText().length)}
               />
             </CarWay>
             <Wpm>
@@ -114,9 +123,12 @@ class RaceApp extends Component {
             </InputDiv>
           </TextContainer>
 
-          <div>
-            <button onClick={this.onRestart}>Restart</button>
-          </div>
+          <Button onClick={this.onRestart}>
+            <i>
+              <HiRefresh />
+            </i>
+            Restart
+          </Button>
         </Container>
       </Wrapper>
     );

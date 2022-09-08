@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 const Preview = ({ text, userInput }) => {
   const matn = text.split("");
@@ -10,7 +10,7 @@ const Preview = ({ text, userInput }) => {
         if (index < userInput.length) {
           color = value === userInput[index] ? "green" : "red";
         }
-    
+
         return (
           <span key={index} style={{ backgroundColor: color }}>
             {value}
@@ -21,4 +21,4 @@ const Preview = ({ text, userInput }) => {
   );
 };
 
-export default Preview;
+export default memo(Preview);

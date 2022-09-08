@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Preview from "./Preview";
 import getText from "./getText";
+import getImg from "../../RacerClone/getImg";
+import { data } from "../../RacerClone/getImg";
 import {
   CarWay,
   CarWayContainer,
